@@ -22,16 +22,24 @@ public class Salle {
         this.ville = ville;
         this.tarif = tarif;
         this.note = note;
-        this.prog = prog;
+        this.prog = new Film[1000];
         this.horraire = horraire;
     }
+    
+    
 
     @Override
     public String toString() {
         return "Salle{" + "adresse=" + adresse + ", ville=" + ville + ", tarif=" + tarif + ", note=" + note + ", prog=" + prog + ", horraire=" + horraire + '}';
     }
     
-    
+    public String versFichier2(){
+        String Film = "";
+        for(int i=0;i<(prog.length);i++){
+                Film = Film+prog[i]+System.lineSeparator();
+                }
+        return(adresse+System.lineSeparator()+ville+System.lineSeparator()+tarif+System.lineSeparator()+note+System.lineSeparator()+Film+horraire);
+    }
 
     public String getAdresse() {
         return adresse;
@@ -56,7 +64,7 @@ public class Salle {
     public int getHorraire() {
         return horraire;
     }
-    
-    
+
+   
     
 }

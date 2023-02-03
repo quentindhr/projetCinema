@@ -4,6 +4,7 @@
  */
 package tpcinema;
 
+import java.io.FileWriter;
 import java.time.LocalDate;
 
 /**
@@ -18,9 +19,9 @@ public class Film {
     private String real;
     private String synopsis;
     private int note;
-    private Salle salle;
+    private Salle[] salle;
 
-    public Film(String titre, String genre, LocalDate DateSortie, String acteur, String real, String synopsis, int note, Salle salle) {
+    public Film(String titre, String genre, LocalDate DateSortie, String acteur, String real, String synopsis, int note, Salle[] salle) {
         this.titre = titre;
         this.genre = genre;
         this.DateSortie = DateSortie;
@@ -28,14 +29,23 @@ public class Film {
         this.real = real;
         this.synopsis = synopsis;
         this.note = note;
-        this.salle = salle;
+        this.salle = new Salle[1000];
     }
-
+    
     @Override
     public String toString() {
         return "Film{" + "titre=" + titre + ", genre=" + genre + ", DateSortie=" + DateSortie + ", acteur=" + acteur + ", real=" + real + ", synopsis=" + synopsis + ", note=" + note + ", salle=" + salle + '}';
     }
 
+    public String versFichier1(){
+        String Salle = "";
+        for(int i=0;i<(salle.length);i++){
+                Salle = Salle+salle[i]+System.lineSeparator();
+                }
+        return titre+ System.lineSeparator()+genre+System.lineSeparator()+ DateSortie +System.lineSeparator()+acteur+System.lineSeparator()+real+System.lineSeparator()+synopsis+System.lineSeparator()+note+System.lineSeparator()+Salle;
+                
+    }
+    
     public String getTitre() {
         return titre;
     }
@@ -64,10 +74,10 @@ public class Film {
         return note;
     }
 
-    public Salle getSalle() {
+    public Salle[] getSalle() {
         return salle;
     }
-    
+
     
     
 }
